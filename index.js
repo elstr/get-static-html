@@ -6,45 +6,52 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const JSSoup = require("jssoup").default;
 
+const BASE_PATH = process.argv[2] || "http://localhost:3000";
+const SAVE_DIRECTORY =
+  process.argv[3] || "/Users/lele/Desktop/get-html/statics";
+
+const pages = ["/", "/examples", "/get-started", "/shopping"];
+
 (async () => {
   const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
-  const pageURL = process.argv[2] || "http://localhost:3000";
-  const saveDirectory =
-    process.argv[3] || "/Users/lele/Desktop/get-html/statics";
-  const fileName = "home.html";
-  console.log("Processing URL: ", pageURL);
-
+  const browserPage = await browser.newPage();
   try {
-    await page.goto(pageURL);
-    await page.waitForSelector("#start");
+    for (let i = 0; i < pages.length; i++) {
+      const page = pages[i];
+      const pageURL = `${BASE_PATH}${page}`;
+      console.log("Processing URL: ", pageURL);
 
-    var html = await page.content();
-    var soup = new JSSoup(html);
-    var imgs = soup.findAll("img");
+      await browserPage.goto(pageURL);
+      await browserPage.waitForSelector("#start");
 
-    imgs = imgs.map((img) => {
-      if (!img.src.contains("static/")) {
-        img.attrs.src = `http:${img.attrs.src}`;
-      }
-    });
+      var html = await browserPage.content();
+      var soup = new JSSoup(html);
 
-    html = soup.prettify();
+      // Format imgs --------------
+      var imgs = soup.findAll("img");
+      imgs = imgs.map((img) => {
+        const { src } = img.attrs;
+        if (!src.includes("static/") && !src.includes("http")) {
+          img.attrs.src = `http:${img.attrs.src}`;
+        }
+      });
 
-    console.log(html);
+      html = soup.prettify();
 
-    fs.writeFile(`${saveDirectory}/${fileName}`, html, function (err) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(`File saved`);
-    });
+      // Save file --------------
+      const fileName = page === "/" ? "/index" : page;
+      fs.writeFile(`${SAVE_DIRECTORY}${fileName}.html`, html, function (err) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(`File saved`);
+      });
 
-    await page.screenshot({ path: `example-index.png` });
+      await browserPage.screenshot({ path: `example-index.png` });
+    }
   } catch (error) {
     console.log(error.message);
+  } finally {
+    browser.close();
   }
-
-  browser.close();
 })();
