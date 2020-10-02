@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8d37e5d1.chunk.css",
+    "main.js": "/static/js/main.a718596f.chunk.js",
+    "main.js.map": "/static/js/main.a718596f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.86945ae8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.86945ae8.js.map",
+    "static/js/2.8b66eb7a.chunk.js": "/static/js/2.8b66eb7a.chunk.js",
+    "static/js/2.8b66eb7a.chunk.js.map": "/static/js/2.8b66eb7a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c64e0b928596252bc156ba410ad268d8.js": "/precache-manifest.c64e0b928596252bc156ba410ad268d8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.8d37e5d1.chunk.css.map": "/static/css/main.8d37e5d1.chunk.css.map",
+    "static/js/2.8b66eb7a.chunk.js.LICENSE.txt": "/static/js/2.8b66eb7a.chunk.js.LICENSE.txt",
+    "static/media/arrow-up.svg": "/static/media/arrow-up.ae38dd10.svg",
+    "static/media/chevron-next.7ae639b1.svg": "/static/media/chevron-next.7ae639b1.svg",
+    "static/media/chevron-prev.0955d933.svg": "/static/media/chevron-prev.0955d933.svg",
+    "static/media/close.efbc1579.svg": "/static/media/close.efbc1579.svg",
+    "static/media/logo.d2c1fdbc.svg": "/static/media/logo.d2c1fdbc.svg",
+    "static/media/menu.0b6413d0.svg": "/static/media/menu.0b6413d0.svg",
+    "static/media/nav.module.scss": "/static/media/parachute-cat.df863950.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86945ae8.js",
+    "static/js/2.8b66eb7a.chunk.js",
+    "static/css/main.8d37e5d1.chunk.css",
+    "static/js/main.a718596f.chunk.js"
+  ]
+}
