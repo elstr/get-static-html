@@ -48,7 +48,6 @@ const pages = ["/", "/get-started", "/examples", "/shopping", "/404"];
       let imgs = soup.findAll("img");
       let links = soup.findAll("link");
       let mediaSources = soup.findAll("source");
-      let scripts = soup.findAll("script");
 
       // --------------------------------------------------------------------
       // -- Format imgs to pull imgs ----------------------------------------
@@ -87,16 +86,6 @@ const pages = ["/", "/get-started", "/examples", "/shopping", "/404"];
           console.log("✅  Static path fixed - ", l.attrs.href);
         });
       }
-      // This should fix the scripts src but when you exec this the whole page breaks :(
-      // if (scripts.length) {
-      //   console.log("🔎 Found Script Links");
-      //   scripts.map((s) => {
-      //     if (s.attrs.src) {
-      //       s.attrs.src = `.${s.attrs.src}`;
-      //       console.log("✅  Script path fixed - ", s.attrs.src);
-      //     }
-      //   });
-      // }
 
       // --------------------------------------------------------------------
       // -- Save HTML to file -----------------------------------------------
