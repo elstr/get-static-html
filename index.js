@@ -71,7 +71,7 @@ const pages = ["/", "/get-started", "/examples", "/shopping", "/404"];
       if (mediaSources.length) {
         console.log("🔎 Found Media Sources");
         mediaSources.map((m) => {
-          m.attrs.srcset = `http:${m.attrs.srcset}`;
+          m.attrs.srcset = `https:${m.attrs.srcset}`;
           console.log("✅  Media source path fixed - ", m.attrs.srcset);
         });
       }
